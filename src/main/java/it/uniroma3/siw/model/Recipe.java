@@ -12,7 +12,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-public class Recipes {
+public class Recipe {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
