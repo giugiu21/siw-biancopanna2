@@ -12,6 +12,11 @@ nav{
     font-size: 42px!important;
     margin-top: 15px;
 }
+.navbar-collapse{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 2%;
+}
 
 body{
     font-family: 'Playpen Sans', cursive;
@@ -19,19 +24,56 @@ body{
 
 .main-container{
     padding-top: 3%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.first-block{
+    background-image: url("../images/home-page.png");
+    background-position: center;
+    background-repeat: no repeat;
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+    border-radius: 1rem;
+}
+
+.text-section{
+    width: 60%;
+    font-weight: bolder;
+    font-size: 45px;
+    padding-top: 5%;
     padding-left: 5%;
 
 }
 
-.navbar-collapse{
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 2%;
+.subtitle{
+    font-weight: lighter;
+    font-size: 16px;
+    width: 55%;
+    padding-left: 5%;
+    margin-top: -5px;
+
 }
+
+
+.btn-container{
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 4%;
+
+
+}
+
 
 .btn{
     background-color: firebrick!important;
     box-shadow: 0px 0px 8px 0px black;
     border-radius: 15px 15px 0;
     color: white!important;
+    margin-left: 5%;
 }
+

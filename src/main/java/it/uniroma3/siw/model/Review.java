@@ -1,31 +1,26 @@
 package it.uniroma3.siw.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Review {
-
 	@Id
 	@GeneratedValue(strategy  = GenerationType.AUTO)
 	private Long id;
-	
 	@NotBlank
 	private String title;
-	
 	@Min(1)
 	@Max(5)
 	private Integer rating;
-	
 	@NotBlank
 	private String text;
-	
+	@OneToMany
+	private Recipe recipe;
 	private String author;
+
 
 	public Long getId() {
 		return id;

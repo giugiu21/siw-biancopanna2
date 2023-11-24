@@ -9,7 +9,6 @@ import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Credentials {
-	
 	public static final String DEFAULT_ROLE = "DEFAULT";
 	public static final String ADMIN_ROLE = "ADMIN";
 	
@@ -17,16 +16,14 @@ public class Credentials {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
 	@NotBlank
 	private String password;
 	private String role;
-	
 	@OneToOne
 	private User user;
-	
 	@NotBlank
 	private String username;
+
 
 	public Long getId() {
 		return id;

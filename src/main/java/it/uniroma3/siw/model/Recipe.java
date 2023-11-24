@@ -13,21 +13,16 @@ import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Recipe {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
 	@NotBlank
 	private String name;
 	private Integer difficulty;
-
 	@OneToOne
 	private Image image;
-	
 	@ManyToOne
 	private Chef chef;
-	
 	@OneToMany
 	private Set<Review> reviews;
 	private String description;
