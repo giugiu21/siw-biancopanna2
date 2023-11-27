@@ -14,8 +14,8 @@ public class User {
 	private String username;
 	@NotBlank
 	private String email;
-	@OneToOne
-	private Credentials credentials;
+	/*@OneToOne
+	private Credentials credentials;*/
 	
 	
 	public Long getId() {

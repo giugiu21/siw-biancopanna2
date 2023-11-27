@@ -17,8 +17,8 @@ public class Review {
 	private Integer rating;
 	@NotBlank
 	private String text;
-	@OneToMany
-	private Recipe recipe;
+	/*@OneToMany
+	private Recipe recipe;*/
 	private String author;
 
 

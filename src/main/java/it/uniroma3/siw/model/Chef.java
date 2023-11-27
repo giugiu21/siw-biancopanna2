@@ -14,8 +14,8 @@ public class Chef {
 	private String name;
 	@NotBlank
 	private String lastname;
-	@OneToMany(mappedBy = "chef")
-	private List<Recipe> recipes;
+	/*@OneToMany(mappedBy = "chef")
+	private List<Recipe> recipes;*/
 	//immagine(?)
 	private String email;
 
