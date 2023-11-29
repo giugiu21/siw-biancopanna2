@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
+@Table(name = "users")
 public class User {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -14,8 +16,7 @@ public class User {
 	private String username;
 	@NotBlank
 	private String email;
-	/*@OneToOne
-	private Credentials credentials;*/
+	
 	
 	
 	public Long getId() {

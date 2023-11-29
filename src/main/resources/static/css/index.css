@@ -30,7 +30,7 @@ body{
 
 
 .first-block{
-    background-image: url("../images/home-page.png");
+    background-image: url("/images/home-page.png");
     background-position: center;
     background-repeat: no repeat;
     background-size: cover;
