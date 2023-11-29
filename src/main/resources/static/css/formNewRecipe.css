@@ -59,6 +59,10 @@ h1{
   	background: #eeeff4!important;
 	border-color: gainsboro;
 	margin-bottom: 2%!important;
+	margin-left: 2%;
+	padding: 0.5%;
+	text-align: center;
+	width: 10%;
 }
 
 .description{
@@ -84,19 +88,14 @@ label{
 
 
 
-.first-column{
-    width: 45%;
+.column{
+    width: 33%;
     display: flex;
     flex-direction: column;
     align-items: baseline;
+    margin-left: 5%;
 }
 
-.second-column{
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-}
 
 .btn-container{
 	display: flex;

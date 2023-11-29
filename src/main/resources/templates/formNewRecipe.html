@@ -49,25 +49,32 @@
 				<h1>Inserisci una nuova ricetta</h1>
 				<label style="font-weight: bolder;">Nome Ricetta:</label>
                 <input type="text" th:field="*{name}" class="input-text form-control">
-                <label style="font-weight: bolder;">Difficoltà (1=semplice, 3=difficile):</label>
-                 <select th:field="*{difficulty}" class="input-select form-control" placeholder="Seleziona">
+                <label style="font-weight: bolder;">Difficoltà (1=semplice, 3=difficile):
+                 <select th:field="*{difficulty}" class="input-select">
     				<option th:value="1" th:text="1"></option>
     				<option th:value="2" th:text="2"></option>
     				<option th:value="3" th:text="3"></option>
 				</select>
+				</label>
 				<label style="font-weight: bolder;">Ingredienti:</label>
                 <div class="checkbox-container">
-					<div class="first-column">
+					<div class="column">
 						<label><input type="checkbox" value="uova" th:field="*{ingredients}"> uova</label>
                 		<label><input type="checkbox" value="farina" th:field="*{ingredients}"> farina</label>
                 		<label><input type="checkbox" value="latte" th:field="*{ingredients}"> latte</label>
                 		<label><input type="checkbox" value="zucchero" th:field="*{ingredients}"> zucchero</label>
 					</div>
-					<div class="second-column">
+					<div class="column">
 						<label><input type="checkbox" value="panna" th:field="*{ingredients}"> panna</label>
                 		<label><input type="checkbox" value="sale" th:field="*{ingredients}"> sale</label>
                 		<label><input type="checkbox" value="lievito" th:field="*{ingredients}"> lievito</label>
                 		<label><input type="checkbox" value="yogurt" th:field="*{ingredients}"> yogurt</label>	
+					</div>
+					<div class="column">
+						<label><input type="checkbox" value="olio" th:field="*{ingredients}"> olio</label>
+                		<label><input type="checkbox" value="gelatina" th:field="*{ingredients}"> gelatina</label>
+                		<label><input type="checkbox" value="burro" th:field="*{ingredients}"> burro</label>
+                		<label><input type="checkbox" value="cacao" th:field="*{ingredients}"> cacao</label>	
 					</div>
 				</div>
                 <label style="font-weight: bolder;">Descrizione:</label>
