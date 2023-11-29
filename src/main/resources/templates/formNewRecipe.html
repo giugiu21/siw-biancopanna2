@@ -15,6 +15,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100;300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet">
+
+	
+	
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <img src="../images/logo.png" width="75" height="65" class="d-inline-block align-top" alt="">
@@ -25,13 +28,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Ricette</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Aggiungi Ricetta?</a>
+                <a class="nav-link" href="/formNewRecipe">Aggiungi Ricetta?</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Login</a>
@@ -44,28 +47,40 @@
         <div class="form-container">
             <form th:action="@{/newRecipe}" method="POST" th:object="${recipe}">
 				<h1>Inserisci una nuova ricetta</h1>
-				<label>Nome Ricetta:</label>
+				<label style="font-weight: bolder;">Nome Ricetta:</label>
                 <input type="text" th:field="*{name}" class="input-text form-control">
-                <label>Difficoltà da 1 a 5:</label>
-                <div class="radio-container">
-                	<input type="radio" value="1" th:field="*{difficulty}">
-                	<label>1</label>
-                	<input type="radio" value="2" th:field="*{difficulty}">
-                	<label>2</label>
-                	<input type="radio" value="3" th:field="*{difficulty}">
-                	<label>3</label>
-                	<input type="radio" value="4" th:field="*{difficulty}">
-                	<label>4</label>
-                	<input type="radio" value="5" th:field="*{difficulty}">
-                	<label>5</label>
+                <label style="font-weight: bolder;">Difficoltà (1=semplice, 3=difficile):</label>
+                 <select th:field="*{difficulty}" class="input-select form-control" placeholder="Seleziona">
+    				<option th:value="1" th:text="1"></option>
+    				<option th:value="2" th:text="2"></option>
+    				<option th:value="3" th:text="3"></option>
+				</select>
+				<label style="font-weight: bolder;">Ingredienti:</label>
+                <div class="checkbox-container">
+					<div class="first-column">
+						<label><input type="checkbox" value="uova" th:field="*{ingredients}"> uova</label>
+                		<label><input type="checkbox" value="farina" th:field="*{ingredients}"> farina</label>
+                		<label><input type="checkbox" value="latte" th:field="*{ingredients}"> latte</label>
+                		<label><input type="checkbox" value="zucchero" th:field="*{ingredients}"> zucchero</label>
+					</div>
+					<div class="second-column">
+						<label><input type="checkbox" value="panna" th:field="*{ingredients}"> panna</label>
+                		<label><input type="checkbox" value="sale" th:field="*{ingredients}"> sale</label>
+                		<label><input type="checkbox" value="lievito" th:field="*{ingredients}"> lievito</label>
+                		<label><input type="checkbox" value="yogurt" th:field="*{ingredients}"> yogurt</label>	
+					</div>
 				</div>
-                <label>Descrizione:</label>
-                <input type="text" th:field="*{description}"  class="input-text form-control">
+                <label style="font-weight: bolder;">Descrizione:</label>
+                <!-- <input type="text" th:field="*{description}"  class="input-text form-control description"> -->
+                <textarea type="text" rows="4" id="description" placeholder="Inserisci il testo della ricetta" class="form-control description"
+                              th:field="*{description}" autocomplete="off"></textarea>
+               
                <div class="btn-container">
 				   <button type="submit" class="btn">Submit</button>
 			   </div>
             </form>
         </div> 
     </div>
+    
 </body>
 </html>

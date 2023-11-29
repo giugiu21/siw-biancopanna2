@@ -1,5 +1,7 @@
 package it.uniroma3.siw.model;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
@@ -13,12 +15,18 @@ import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Recipe {
+	
+	//public static final String[] ingType = {"uova", "farina", "latte", "zucchero", "sale", "panna", "lievito", "yogurt"};
+	//public List<String> ingredientType = Arrays.asList(ingType);
+	//public static final Integer[] difficultyNumber = {1, 2, 3, 4, 5};
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@NotBlank
 	private String name;
 	private Integer difficulty;
+	private List<String> ingredients;
 	@OneToOne
 	private Image image;
 	@ManyToOne
@@ -57,6 +65,12 @@ public class Recipe {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public List<String> getIngredients() {
+		return ingredients;
+	}
+	public void setIngredients(List<String> ingredients) {
+		this.ingredients = ingredients;
 	}
 
 }
