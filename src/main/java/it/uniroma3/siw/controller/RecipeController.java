@@ -18,6 +18,7 @@ public class RecipeController {
         model.addAttribute("recipe", new Recipe());
         return "formNewRecipe.html";
     }
+    
 
     @PostMapping("/newRecipe")
     public String newRecipe(@ModelAttribute("recipe") Recipe recipe, Model model){
