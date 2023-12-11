@@ -13,7 +13,7 @@ public class User {
 	@NotBlank
 	private String name;
 	@NotBlank
-	private String username;
+	private String lastname;
 	@NotBlank
 	private String email;
 	
@@ -31,11 +31,11 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getUsername() {
-		return username;
+	public String getLastname() {
+		return lastname;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 	public String getEmail() {
 		return email;

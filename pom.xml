@@ -15,6 +15,8 @@
 	<description>Progetto personale</description>
 	<properties>
 		<java.version>17</java.version>
+		<!-- Spring Security -->
+		<spring-security.version>6.0.0</spring-security.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -45,6 +47,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
