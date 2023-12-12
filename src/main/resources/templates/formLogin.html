@@ -40,5 +40,18 @@
     </div>
 </nav>
 <body>
+	<div class="main-container">
+		 <div class="form-container">
+            <form th:action="@{/login}" method="POST">
+				<h1>Login</h1>
+                <label style="font-weight: bolder;">Username:</label>
+                <input name="username" type="text" class="input-text form-control">
+                <label style="font-weight: bolder;">Password:</label>
+                <input name="password" type="password" class="input-text form-control">
+               <div class="btn-container">
+				   <button type="submit" class="btn">Entra</button>
+			   </div>
+            </form>
+	</div>
 </body>
 </html>
