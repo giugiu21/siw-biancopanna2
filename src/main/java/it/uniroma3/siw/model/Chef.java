@@ -3,7 +3,7 @@ package it.uniroma3.siw.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
-import java.util.List;
+
 
 @Entity
 public class Chef {
@@ -15,7 +15,8 @@ public class Chef {
 	@NotBlank
 	private String lastname;
 
-	//immagine(?)
+	private String image;
+	
 	private String email;
 
 
@@ -49,6 +50,14 @@ public class Chef {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }

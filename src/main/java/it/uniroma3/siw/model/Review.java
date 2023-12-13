@@ -16,6 +16,7 @@ public class Review {
 	@Max(5)
 	private Integer rating;
 	@NotBlank
+	@Column(length = 300)
 	private String text;
 
 	private String author;

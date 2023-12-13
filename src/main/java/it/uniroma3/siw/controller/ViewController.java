@@ -45,8 +45,9 @@ public class ViewController {
 	}
 	
 	@GetMapping("/indexLogged")
-	public String indexAdmin(Model model) {
-		model.addAttribute("recipes", this.recipeRepository.findAll());
+	public String indexLogged(Model model) {
+		//model.addAttribute("recipes", this.recipeRepository.findAll());
+		model.addAttribute("recipes", this.recipeRepository.findTopN(4));
 		return "indexLogged.html";
 	}
 	
@@ -64,7 +65,8 @@ public class ViewController {
 		}
 
 		/*model.addAttribute("userDetails", userDetails);*/
-		model.addAttribute("recipes", this.recipeRepository.findAll());
+		//model.addAttribute("recipes", this.recipeRepository.findAll());
+		model.addAttribute("recipes", this.recipeRepository.findTopN(4));
 		return "indexLogged.html";
 	}
 	

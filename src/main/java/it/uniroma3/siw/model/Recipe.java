@@ -1,16 +1,15 @@
 package it.uniroma3.siw.model;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -27,12 +26,12 @@ public class Recipe {
 	private String name;
 	private Integer difficulty;
 	private List<String> ingredients;
-	@OneToOne
-	private Image image;
+	private String image;
 	@ManyToOne
 	private Chef chef;
 	@OneToMany
 	private Set<Review> reviews;
+	@Column(length = 300)
 	private String description;
 	
 	
@@ -54,12 +53,7 @@ public class Recipe {
 	public void setDifficulty(Integer difficulty) {
 		this.difficulty = difficulty;
 	}
-	public Image getImage() {
-		return image;
-	}
-	public void setImage(Image image) {
-		this.image = image;
-	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -71,6 +65,24 @@ public class Recipe {
 	}
 	public void setIngredients(List<String> ingredients) {
 		this.ingredients = ingredients;
+	}
+	public Chef getChef() {
+		return chef;
+	}
+	public void setChef(Chef chef) {
+		this.chef = chef;
+	}
+	public Set<Review> getReviews() {
+		return reviews;
+	}
+	public void setReviews(Set<Review> reviews) {
+		this.reviews = reviews;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }

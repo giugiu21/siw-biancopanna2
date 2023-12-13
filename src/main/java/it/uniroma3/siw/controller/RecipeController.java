@@ -13,26 +13,7 @@ public class RecipeController {
     @Autowired
     RecipeRepository recipeRepository;
 
-    @GetMapping("/formNewRecipe")
-    public String FormNewRecipe(Model model){
-        model.addAttribute("recipe", new Recipe());
-        return "formNewRecipe.html";
-    }
     
-
-    @PostMapping("/newRecipe")
-    public String newRecipe(@ModelAttribute("recipe") Recipe recipe, Model model){
-        if(!recipeRepository.existsByName(recipe.getName())){
-            this.recipeRepository.save(recipe);
-            model.addAttribute("recipe", recipe);
-            return "recipe.html";
-        }
-        else{
-            model.addAttribute("messaggioErrore", "Questa ricetta già esiste");
-            return "formNewRecipe.html";
-        }
-    }
-
     @GetMapping("/recipes/{id}")
     public String getRecipe(@PathVariable("id")Long id, Model model){
         model.addAttribute("recipe", this.recipeRepository.findById(id).get());
