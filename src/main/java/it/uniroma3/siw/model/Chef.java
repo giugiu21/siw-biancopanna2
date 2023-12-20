@@ -14,8 +14,11 @@ public class Chef {
 	private String name;
 	@NotBlank
 	private String lastname;
+	
+	//aggiungi data di nascita?
+	
 
-	private String image;
+	//private String image;
 	
 	private String email;
 
@@ -52,12 +55,12 @@ public class Chef {
 		this.email = email;
 	}
 
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
+//	public String getImage() {
+//		return image;
+//	}
+//
+//	public void setImage(String image) {
+//		this.image = image;
+//	}
 
 }

@@ -46,8 +46,8 @@ public class AuthConfiguration {
 		.requestMatchers(HttpMethod.GET,"/", "/index", "/register", "/login", "/css/**", "/images/**", "favicon.ico").permitAll()
 		//chiunque autenticato o no può mandare richieste POST per login e register
 		.requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()
-		.requestMatchers(HttpMethod.GET, "admin/**").hasAnyAuthority(Credentials.ADMIN_ROLE)
-		.requestMatchers(HttpMethod.POST, "admin/**").hasAnyAuthority(Credentials.ADMIN_ROLE)
+		.requestMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(Credentials.ADMIN_ROLE)
+		.requestMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(Credentials.ADMIN_ROLE)
 		//richieste di altri utenti autenticati
 		.anyRequest().authenticated()
 		//FORM LOGIN

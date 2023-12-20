@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -17,6 +18,7 @@ import it.uniroma3.siw.service.UserService;
 import it.uniroma3.siw.validators.CredentialsValidator;
 import it.uniroma3.siw.validators.UserValidator;
 import it.uniroma3.siw.model.Credentials;
+import it.uniroma3.siw.model.Recipe;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.RecipeRepository;
 import jakarta.validation.Valid;
@@ -100,6 +102,27 @@ public class ViewController {
 	public String loginPage(Model model) {
 		return "formLogin.html";
 	}
+	
+	@GetMapping("/recipe/{id}")
+	public String product(@PathVariable("id") Long id, Model model) {
+
+		//UserDetails userDetails = this.userService.getUserDetails();
+		//model.addAttribute("userDetails", userDetails);
+
+		Recipe recipe = this.recipeRepository.findById(id).get();
+
+		model.addAttribute("recipe", recipe);
+
+//		/* Gestione della review */
+//		if (userDetails != null){
+//			if(this.credentialsService.getCredentials(userDetails.getUsername()) !=null){
+//				model.addAttribute("review", new Review());
+//			}
+//		}
+		
+		return "recipe.html";
+	}
+
 	
 	
 	

@@ -1,0 +1,93 @@
+
+form{
+	 display: flex;
+	 flex-direction: column;
+	 border: 3px solid lightgray;
+	 border-radius: 1rem;
+	 background-color: rgba(255, 255, 255, 0.725);
+	 width: 40%;
+	 padding: 3%;
+	 margin: 5%;
+	 margin-left: 30%;
+	 margin-right: 5%;
+		
+}
+
+h1{
+	text-align: center;
+	font-weight: bolder!important;
+	font-size: 250%!important;
+	color:firebrick!important;
+	margin-bottom: 5%!important;
+}
+
+.input-text{
+	background: #eeeff4!important;
+  	color: black!important;
+  	border-radius: 10pt!important;
+  	height: 40px;
+  	border-color: gainsboro;
+  	margin-bottom: 2%;
+	
+}
+
+.input-select{
+	border-radius: 10pt!important;
+  	height: 40px!important;
+  	background: #eeeff4!important;
+	border-color: gainsboro;
+	margin-bottom: 2%!important;
+	margin-left: 2%;
+	padding: 0.5%;
+	text-align: center;
+	width: 10%;
+}
+
+.description{
+	background: #eeeff4!important;
+  	color: black!important;
+  	border-radius: 10pt!important;
+  	border-color: gainsboro;
+  	margin-bottom: 2%;
+	
+}
+
+
+
+label{
+	  margin-bottom: 1%;
+}
+
+.checkbox-container{
+	display: flex;
+	flex-direction: row;
+	margin: 2% 5%;
+}
+
+
+
+.column{
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    margin-left: 5%;
+}
+
+
+.btn-container{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-left: -5%;
+}
+
+.btn{
+    background-color: firebrick!important;
+    box-shadow: 0px 0px 8px 0px black;
+    border-radius: 15px 15px 0;
+    color: white!important;
+    margin-left: 5%;
+    width: 140px!important;
+    margin-top: 2%;
+}
