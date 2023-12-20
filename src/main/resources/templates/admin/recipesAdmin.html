@@ -45,7 +45,7 @@
 </nav>
 <body>
 	<div class="main-container">
-		<h1 id="title">Guarda le ultime ricette</h1>
+		<h1 id="title">Guarda tutte le ricette</h1>
 			<div class="card-container">
 				<div class="card" th:each="recipe : ${recipes}">
 					<img class="card-image" th:src="${recipe.image}"></img>
@@ -61,9 +61,9 @@
 				                		<p class="card-text" th:text="${recipe.description}">descrizione</p> -->
 						<div class="card-button">
 							
-							<a href="#" class="icon"><i class="bi bi-eye"></i></a>
-							<a href="#" class="icon"><i class="bi bi-pencil-square"></i></a>
-							<a href="#" class="icon"><i class="bi bi-trash"></i></a>
+							<a th:href="@{'/recipe/' + ${recipe.id}}" class="icon"><i class="bi bi-eye"></i></a>
+							<a th:href="@{'/admin/formUpdateRecipe/' + ${recipe.id}}" class="icon"><i class="bi bi-pencil-square"></i></a>
+							<a th:href="@{'/admin/delete/' + ${recipe.id}}" class="icon"><i class="bi bi-trash"></i></a>
 							<!-- pagina dettaglio con possibilità di fare recensioni -->
 						</div>
 					</div>

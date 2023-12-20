@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>New Recipe</title>
+    <link href="/css/formNewRecipe.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/shared.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet">
+
+	
+	
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <img src="../images/logo.png" width="75" height="65" class="d-inline-block align-top" alt="">
+    <a class="navbar-brand" href="#">Bianco Panna</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin/indexAdmin">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/recipesAdmin">Ricette</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/formNewRecipe">Aggiungi Ricetta</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/formNewChef">Aggiungi Chef</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<body>
+    <div class="main-container">
+        <div class="form-container">
+            <form th:action="@{/admin/updateRecipe}" method="POST" th:object="${recipe}">
+				<h1>Inserisci una nuova ricetta</h1>
+				<label style="font-weight: bolder;">Nome Ricetta:
+                <input type="text" th:field="*{name}" class="input-text form-control"></label>
+                <label style="font-weight: bolder;">Url Immagine Ricetta:
+                <input type="text" th:field="*{image}" class="input-text form-control"></label>
+                <label style="font-weight: bolder;">Difficoltà (1=semplice, 3=difficile):
+                 <select th:field="*{difficulty}" class="input-select">
+    				<option th:value="1" th:text="1"></option>
+    				<option th:value="2" th:text="2"></option>
+    				<option th:value="3" th:text="3"></option>
+				</select>
+				</label>
+				<label style="font-weight: bolder;">Ingredienti:</label>
+                <div class="checkbox-container">
+					<div class="column">
+						<label><input type="checkbox" value="uova" th:field="*{ingredients}"> uova</label>
+                		<label><input type="checkbox" value="farina" th:field="*{ingredients}"> farina</label>
+                		<label><input type="checkbox" value="latte" th:field="*{ingredients}"> latte</label>
+                		<label><input type="checkbox" value="zucchero" th:field="*{ingredients}"> zucchero</label>
+					</div>
+					<div class="column">
+						<label><input type="checkbox" value="panna" th:field="*{ingredients}"> panna</label>
+                		<label><input type="checkbox" value="sale" th:field="*{ingredients}"> sale</label>
+                		<label><input type="checkbox" value="lievito" th:field="*{ingredients}"> lievito</label>
+                		<label><input type="checkbox" value="yogurt" th:field="*{ingredients}"> yogurt</label>	
+					</div>
+					<div class="column">
+						<label><input type="checkbox" value="olio" th:field="*{ingredients}"> olio</label>
+                		<label><input type="checkbox" value="gelatina" th:field="*{ingredients}"> gelatina</label>
+                		<label><input type="checkbox" value="burro" th:field="*{ingredients}"> burro</label>
+                		<label><input type="checkbox" value="cacao" th:field="*{ingredients}"> cacao</label>	
+					</div>
+				</div>
+                <label style="font-weight: bolder;">Descrizione:
+                <textarea type="text" rows="4" id="description" placeholder="Inserisci il testo della ricetta" class="form-control description"
+                              th:field="*{description}" autocomplete="off"></textarea>
+                              
+                 </label>
+				<label style="font-weight: bolder;">Seleziona uno Chef:
+                 <select th:field="${recipe.chef.setId()}" class="input-select" id="width">
+    				<div th:each="chef : ${chefs}"><option th:value="${chef.id}" th:text="${chef.lastname}"></option></div>	
+				</select>
+				</label>
+				
+				<div class="btn-container">
+				<button type="submit" class="btn">Submit</button>
+			   </div>
+            </form>
+        </div> 
+    </div>
+    
+</body>
+</html>

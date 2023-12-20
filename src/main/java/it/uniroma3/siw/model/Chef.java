@@ -1,5 +1,7 @@
 package it.uniroma3.siw.model;
 
+import java.util.Set;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -21,6 +23,16 @@ public class Chef {
 	//private String image;
 	
 	private String email;
+	
+	@OneToMany(fetch = FetchType.EAGER)
+	private Set<Recipe> recipes;
+
+	public Set<Recipe> getRecipes() {
+		return recipes;
+	}
+	public void setRecipes(Set<Recipe> recipes) {
+		this.recipes = recipes;
+	}
 
 
 	public Long getId() {

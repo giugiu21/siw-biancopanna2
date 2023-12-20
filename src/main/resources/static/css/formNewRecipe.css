@@ -44,6 +44,10 @@ h1{
 	width: 10%;
 }
 
+#width{
+	width: 40%!important;
+}
+
 .description{
 	background: #eeeff4!important;
   	color: black!important;
