@@ -1,0 +1,62 @@
+.navbar-brand{
+	padding-top: 2%!important;
+}
+
+.main-container{
+	background-position: center!important;
+	background-repeat: no-repeat!important;
+	background-size: cover!important;
+}
+
+
+.form-container{
+	display: flex;
+	 flex-direction: column;
+	 border: 3px solid lightgray;
+	 border-radius: 1rem;
+	 background-color: rgba(255, 255, 255, 0.850);
+	 width: 40%;
+	 padding: 3%;
+	 margin: 5%;
+	 margin-left: 30%;
+	 margin-right: 5%;
+		
+}
+
+ul{
+	margin-bottom: -1%!important;
+	margin-top: -1%!important;
+}
+
+h6{
+	margin-top: 3%;
+}
+
+p{
+	margin-top: 0;
+}
+
+li{
+	display: flex;
+}
+
+a{
+	margin-bottom: 2%;
+}
+
+p{
+	padding-top: 4%;
+}
+
+
+
+i:hover{
+	color: grey!important;
+	}
+
+
+i{
+	color: firebrick!important;
+	text-decoration: none;
+	
+}

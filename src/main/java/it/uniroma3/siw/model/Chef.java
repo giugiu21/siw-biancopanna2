@@ -1,6 +1,9 @@
 package it.uniroma3.siw.model;
 
-import java.util.Set;
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -17,23 +20,36 @@ public class Chef {
 	@NotBlank
 	private String lastname;
 	
-	//aggiungi data di nascita?
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dateOfBirth;
 	
 
 	//private String image;
 	
 	private String email;
 	
-	@OneToMany(fetch = FetchType.EAGER)
-	private Set<Recipe> recipes;
 
-	public Set<Recipe> getRecipes() {
+	
+	@OneToMany(mappedBy="chef")
+	private List<Recipe> recipes;
+	
+	
+	
+	public List<Recipe> getRecipes() {
 		return recipes;
 	}
-	public void setRecipes(Set<Recipe> recipes) {
+	
+	public void setRecipes(List<Recipe> recipes) {
 		this.recipes = recipes;
 	}
 
+	public LocalDate getDateOfBirth() {
+		return dateOfBirth;
+	}
+	
+	public void setDateOfBirth(LocalDate dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
 
 	public Long getId() {
 		return id;

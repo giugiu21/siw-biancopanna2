@@ -36,10 +36,17 @@ public class AdminController {
 	@Autowired
 	RecipeValidator recipeValidator;
 
+	
 	@GetMapping("/admin/indexAdmin")
 	public String indexAdmin(Model model) {
 		return "admin/indexAdmin.html";
 	}
+	
+	 @GetMapping("/admin/recipes/{id}")
+	    public String getRecipe(@PathVariable("id")Long id, Model model){
+	        model.addAttribute("recipe", this.recipeRepository.findById(id).get());
+	        return "admin/recipeAdmin.html";
+	    }
 
 	@GetMapping("/admin/formNewRecipe")
 	public String FormNewRecipe(Model model) {
@@ -52,12 +59,18 @@ public class AdminController {
 		if (!recipeRepository.existsByName(recipe.getName())) {
 			this.recipeRepository.save(recipe);
 			model.addAttribute("recipe", recipe);
-			return "recipe.html";
+			return "admin/recipeAdmin.html";
 		} else {
 			model.addAttribute("messaggioErrore", "Questa ricetta già esiste");
 			return "admin/formNewRecipe.html";
 		}
 	}
+	
+	@GetMapping("/admin/recipe/{id}")
+    public String getRecipeAdmin(@PathVariable("id")Long id, Model model){
+        model.addAttribute("recipe", this.recipeRepository.findById(id).get());
+        return "admin/recipeAdmin.html";
+    }
 	
 	@GetMapping("/admin/formNewChef")
 	public String FormNewChef(Model model) {
@@ -70,11 +83,25 @@ public class AdminController {
 		if (!chefRepository.existsByName(chef.getName())) {
 			this.chefRepository.save(chef);
 			model.addAttribute("chef", chef);
-			return "recipes.html";
+			model.addAttribute("recipes", this.recipeRepository.findAll());
+		    return "admin/recipesAdmin.html";
 		} else {
 			model.addAttribute("messaggioErrore", "Questo chef già esiste");
 			return "admin/formNewChef.html";
 		}
+	}
+	
+	@GetMapping(value="/admin/setChefToRecipe/{chefId}/{recipeId}")
+	public String setChefToRecipe(@PathVariable("chefId") Long chefId, @PathVariable("recipeId") Long recipeId, Model model) {
+		
+		Chef chef = this.chefRepository.findById(chefId).get();
+		Recipe recipe = this.recipeRepository.findById(recipeId).get();
+		recipe.setChef(chef);
+		this.recipeRepository.save(recipe);
+		
+		model.addAttribute("recipe", recipe);
+		model.addAttribute("recipes", this.recipeRepository.findAll());
+		return "admin/recipesAdmin.html";
 	}
 	
 	
@@ -95,27 +122,7 @@ public class AdminController {
         return "admin/formUpdateRecipe.html";
     }
 	
-	 @PostMapping("/admin/updateRecipe")
-	 public String updateRecipe(Model model, @Valid @ModelAttribute("recipe") Recipe recipe, BindingResult bindingResult){       
-		 this.recipeValidator.validate(recipe,bindingResult);
-		 
-		Chef chef = recipe.getChef();
-		 
-		 if(!bindingResult.hasErrors()){
-			 
-			 chef.getRecipes().add(recipe);
-			//this.chefRepository.save(chef);
-			recipe.setChef(chef);
-				
-			 model.addAttribute("recipe", recipe);
-			 recipeServiceClass.editDetailsToRecipe(recipe);
-			 
-			 return "recipe.html";
-		 } 
-			 return "admin/formUpdateRecipe.html";
-	 }
-	
-	
+
 
     @GetMapping("/admin/recipesAdmin")
     public String allRecipes(Model model){

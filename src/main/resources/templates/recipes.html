@@ -29,10 +29,7 @@
                 <a class="nav-link" href="/indexLogged">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Ricette</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"  href="/formNewRecipe">Aggiungi Ricetta?</a>
+                <a class="nav-link" href="/recipes">Ricette</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/logout">Logout</a>
@@ -57,11 +54,7 @@
 						<!--<h6>Descrizione:</h6>
 				                		<p class="card-text" th:text="${recipe.description}">descrizione</p> -->
 						<div class="card-button">
-							
-							<a th:href="@{'/recipe/' + ${recipe.id}}" class="icon"><i class="bi bi-eye"></i></a>
-							<a href="#" class="icon"><i class="bi bi-pencil-square"></i></a>
-							<a href="#" class="icon"><i class="bi bi-trash"></i></a>
-							<!-- pagina dettaglio con possibilità di fare recensioni -->
+							<a class="btn" th:href="@{'/recipe/' + ${recipe.id}}">Visualizza</a>
 						</div>
 					</div>
 				</div>

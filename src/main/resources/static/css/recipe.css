@@ -3,6 +3,7 @@
 .ingredient-list-container{
 	margin-bottom: 5%;
 	width: 55%;
+	margin-top: 2%;
 }
 
 .column-container{
@@ -12,21 +13,34 @@
 	margin-top: 3%;
 }
 
-
-
-.difficulty-container{
-	display:flex;
-	flex-direction: row;
-	margin-top: 2%;
+.container-column{
+	display: flex;
+	margin-left: 2%;
 }
 
-#difficulty{
-    margin-left: 2%;
+
+.difficulty-text{
+	display:flex;
+	margin-left: 2%;
     font-size: 1.9em;
     font-weight: bold;
     color: firebrick;
 }
 
+
+.difficulty-container{
+	width: 40%;
+	margin-top: 2%;
+	
+}
+
+
+
+#sottotitolo-descrizione{
+	margin-top: -3%;
+	font-weight: bold;
+	font-size: 2em;
+}
 
 #titolo{
 	font-family: 'Playpen Sans';
@@ -39,6 +53,7 @@
 .sottotitolo{
 	font-weight: bold;
 	font-size: 2em;
+	margin-top: -2%;
 	
 }
 
