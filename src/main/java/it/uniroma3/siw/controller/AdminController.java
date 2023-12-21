@@ -3,8 +3,6 @@ package it.uniroma3.siw.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,10 +14,7 @@ import it.uniroma3.siw.model.Chef;
 import it.uniroma3.siw.model.Recipe;
 import it.uniroma3.siw.repository.ChefRepository;
 import it.uniroma3.siw.repository.RecipeRepository;
-import it.uniroma3.siw.service.RecipeService;
-import it.uniroma3.siw.service.RecipeServiceClass;
 import it.uniroma3.siw.validators.RecipeValidator;
-import jakarta.validation.Valid;
 
 @Controller
 public class AdminController {
@@ -30,8 +25,7 @@ public class AdminController {
 	@Autowired
 	ChefRepository chefRepository;
 
-	@Autowired
-	RecipeServiceClass recipeServiceClass;
+
 	
 	@Autowired
 	RecipeValidator recipeValidator;
