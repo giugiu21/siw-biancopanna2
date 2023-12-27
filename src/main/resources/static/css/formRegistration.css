@@ -1,3 +1,12 @@
+.main-container{
+	background-color: rgb(246, 221, 225);
+	}
+
+h1{
+	font-weight: bolder;
+	color: firebrick!important;
+}
+
 
 form{
 	 display: flex;

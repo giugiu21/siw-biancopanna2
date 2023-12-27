@@ -1,12 +1,17 @@
 package it.uniroma3.siw.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import java.util.Optional;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 
 
 @Service
@@ -25,6 +30,16 @@ public class UserService {
     @Transactional
     public User saveUser(User user) {
     	return this.userRepository.save(user);
+    }
+    
+    @Transactional
+    public UserDetails getUserDetails(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = null;
+        if(!(authentication instanceof AnonymousAuthenticationToken)){
+            userDetails = (UserDetails)authentication.getPrincipal();
+        }
+        return userDetails;
     }
 
 }

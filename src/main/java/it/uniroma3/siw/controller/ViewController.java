@@ -14,13 +14,17 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import it.uniroma3.siw.service.CredentialsService;
+import it.uniroma3.siw.service.RecipeServiceClass;
 import it.uniroma3.siw.service.UserService;
 import it.uniroma3.siw.validators.CredentialsValidator;
+import it.uniroma3.siw.validators.ReviewValidator;
 import it.uniroma3.siw.validators.UserValidator;
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Recipe;
+import it.uniroma3.siw.model.Review;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.RecipeRepository;
+import it.uniroma3.siw.repository.ReviewRepository;
 import jakarta.validation.Valid;
 
 @Controller
@@ -33,7 +37,16 @@ public class ViewController {
 	private UserService userService;
 	
 	@Autowired
+	private RecipeServiceClass recipeService;
+	
+	@Autowired
 	private RecipeRepository recipeRepository;
+	
+	@Autowired
+	private ReviewRepository reviewRepository;
+	
+	@Autowired
+	private ReviewValidator reviewValidator;
 	
 	@Autowired
 	private UserValidator userValidator;
@@ -63,6 +76,7 @@ public class ViewController {
 			credentials = this.credentialsService.getCredentials(userDetails.getUsername());
 		}
 		if(credentials != null && credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			model.addAttribute("recipes", this.recipeRepository.findTopN(4));
 			return "admin/indexAdmin.html";
 		}
 
@@ -113,12 +127,41 @@ public class ViewController {
 
 		model.addAttribute("recipe", recipe);
 
-//		/* Gestione della review */
-//		if (userDetails != null){
-//			if(this.credentialsService.getCredentials(userDetails.getUsername()) !=null){
-//				model.addAttribute("review", new Review());
-//			}
-//		}
+		/* Gestione della review */
+		model.addAttribute("review", new Review());
+		
+		return "recipe.html";
+	}
+	
+	@PostMapping("/user/review/{productId}")
+	public String addReview(Model model, @Valid @ModelAttribute("review") Review review, BindingResult bindingResult, @PathVariable("productId") Long id){
+		this.reviewValidator.validate(review,bindingResult);
+		Recipe recipe = this.recipeRepository.findById(id).get();
+		String username = this.userService.getUserDetails().getUsername();
+
+		if(!bindingResult.hasErrors() && !this.recipeService.hasReviewFromAuthor(id, username)){
+			if(this.userService.getUserDetails() != null && !recipe.getReviews().contains(review)){
+				review.setAuthor(username);
+				this.reviewRepository.save(review);
+				recipe.getReviews().add(review);
+			}
+		}
+		this.recipeRepository.save(recipe);
+
+		if(this.userService.getUserDetails() != null && !recipe.getReviews().contains(review)){
+			if(!this.recipeService.hasReviewFromAuthor(id, username)){
+				this.reviewRepository.save(review);
+				recipe.getReviews().add(review);
+			}
+			else{
+				model.addAttribute("reviewError", "Already Reviewed!");
+			}
+
+		}
+		this.recipeRepository.save(recipe);
+
+		model.addAttribute("recipe", recipe);
+
 		
 		return "recipe.html";
 	}

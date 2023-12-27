@@ -1,4 +1,7 @@
 
+.main-container{
+	background-color: rgb(246, 221, 225);
+}
 
 form{
 	 display: flex;

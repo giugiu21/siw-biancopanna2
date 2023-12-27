@@ -15,8 +15,33 @@
 
 .container-column{
 	display: flex;
-	margin-left: 2%;
+	margin-left: 5%;
 }
+
+.icon {
+    border-radius: 1rem;
+    width: 6%;
+    background-color: firebrick!important;
+    margin: -1%;
+    padding: 1%;
+    padding-bottom: 1.3%;
+    padding-left: 2.3%;
+}
+
+
+.icon:hover{
+	background-color: grey!important;
+	border: lightgrey;
+}
+
+
+
+i{
+	color: white;
+	text-decoration: none;
+	
+}
+
 
 
 .difficulty-text{
@@ -55,6 +80,80 @@
 	font-size: 2em;
 	margin-top: -2%;
 	
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-left: 15%;
+    border: 3px solid lightgray;
+	border-radius: 1rem;
+	padding: 2%;
+}
+
+#review-title{
+	font-weight: bolder!important;
+	width: 100%;
+	text-align: center;
+	margin-top: 5%;
+	color:firebrick!important;
+	margin-bottom: 5%!important;
+}
+
+
+
+h1{
+	font-weight: bolder!important;
+	font-size: 250%!important;
+	color:firebrick!important;
+	margin-bottom: 5%!important;
+}
+
+.input-text{
+	background: #eeeff4!important;
+  	color: black!important;
+  	border-radius: 10pt!important;
+  	height: 40px;
+  	border-color: gainsboro;
+  	margin-bottom: 2%;
+	
+}
+
+.input-select{
+	border-radius: 10pt!important;
+  	height: 40px!important;
+  	background: #eeeff4!important;
+	border-color: gainsboro;
+	margin-bottom: 2%!important;
+	margin-left: 2%;
+	padding: 0.5%;
+	text-align: center;
+	width: 6%;
+}
+
+.btn-container{
+	display: flex;
+	justify-content: center;
+}
+
+#width{
+	width: 40%!important;
+}
+
+.description{
+	background: #eeeff4!important;
+  	color: black!important;
+  	border-radius: 10pt!important;
+  	border-color: gainsboro;
+  	margin-bottom: 2%;
+	
+}
+
+
+
+label{
+	  margin-bottom: 1%;
 }
 
 

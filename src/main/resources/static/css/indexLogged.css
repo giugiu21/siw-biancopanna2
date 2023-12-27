@@ -90,6 +90,31 @@ h6{
 }
 
 
+.icon{
+	border-radius: 2rem;
+	width: 11.5%;
+	background-color: firebrick!important;
+	margin: 1%;
+	padding: 2%;
+	padding-bottom: 3%;
+	padding-left: 3.5%;
+	
+}
+
+.icon:hover{
+	background-color: grey!important;
+	border: lightgrey;
+}
+
+
+
+i{
+	color: white;
+	text-decoration: none;
+	
+}
+
+
 .card-button{
     display: flex;
     justify-content: center;

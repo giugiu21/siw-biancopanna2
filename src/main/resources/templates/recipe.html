@@ -57,10 +57,58 @@
 					</div>
 				</div>
 			</div>
-			<div style="margin-left: 2%;">
+			<div style="margin-left: 5%;">
 				<h2 id="sottotitolo-descrizione">Descrizione ricetta</h1>
 				<p th:text="${recipe.description}"></p>
 			</div>
-	</div>
+			<!--REVIEWS-->
+			<div th:if="${review != null}">
+				<h2 id="review-title">Scrivi una recensione per questa ricetta</h2>
+				<form th:action="@{'/user/review/' + ${recipe.id}}" th:object="${review}" method="post" id="review">
+			
+			
+					<label style="font-weight: bolder;">Titolo:</label>
+					<input type="text" th:field="*{title}" class="input-text form-control">
+					<label style="font-weight: bolder;">Testo:</label>
+					<!-- <input type="text" th:field="*{description}"  class="input-text form-control description"> -->
+					<textarea type="text" rows="4" id="text" placeholder="Inserisci il testo della recensione"
+						class="form-control description" th:field="*{text}" autocomplete="off"></textarea>
+					<label style="font-weight: bolder;">Rating:
+						<select th:field="*{rating}" class="input-select">
+							<option th:value="1" th:text="1"></option>
+							<option th:value="2" th:text="2"></option>
+							<option th:value="3" th:text="3"></option>
+							<option th:value="4" th:text="4"></option>
+							<option th:value="5" th:text="5"></option>
+						</select>
+					</label>
+					<div class="btn-container">
+						<button type="submit" class="btn">Submit</button>
+					</div>
+				</form>
+			</div>
+			<!-- REVIEW LIST -->
+			<div th:if="${not #lists.isEmpty(recipe.reviews)}">
+				<h2 id="review-title">Leggi anche le altre recensioni</h2>
+				<!-- SINGLE REVIEW-->
+				<ul class="list-group" style="width: 80%; margin-left: 10%;">
+					<li class="list-group-item d-flex" style="flex-direction: column!important;"
+						th:each="review : ${recipe.reviews}">
+						<div class="review-title-line">
+							<h2 th:text="${review.title}">Titolo</h2>
+						</div>
+						<div>
+							<div th:text="'-' + ${review.author}">Author username</div>
+						</div>
+						<div class="review-text" th:text="${review.text}">Review Text</div>
+						<div th:text="${'Rating: ' + review.rating}">Rating: 5</div>
+			
+			
+					</li>
+				</ul>
+			
+			</div>
+			
+			</div>
 </body>
 </html>

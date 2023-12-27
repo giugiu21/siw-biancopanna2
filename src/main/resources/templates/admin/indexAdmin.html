@@ -45,7 +45,30 @@
 </nav>
 <body>
 	<div class="main-container">
-		
+		<h1 id="title">Modifica le ultime ricette</h1>
+		<div class="container-main-scroller">
+  			<div class="media-scroller snaps-inline">
+           		<div class="card" th:each="recipe : ${recipes}">
+              		<img class="card-image" th:src="${recipe.image}"></img>
+              			<div class="card-body">
+                		<h5 class="card-title" th:text="${recipe.name}">Titolo Ricetta</h5>
+                		<h6>Ingredienti:</h6>
+                		<ul>
+							<div th:each="ingredient : ${recipe.ingredients}">
+								<li th:text="${ingredient}">ingrediente</li>
+							</div>
+						</ul>
+						<!--<h6>Descrizione:</h6>
+                		<p class="card-text" th:text="${recipe.description}">descrizione</p> -->
+                		<div class="card-button">
+                  		<a th:href="@{'/admin/recipe/' + ${recipe.id}}" class="icon"><i class="bi bi-eye"></i></a>
+						<a th:href="@{'/admin/formUpdateRecipe/' + ${recipe.id}}" class="icon"><i class="bi bi-pencil-square"></i></a>
+						<a th:href="@{'/admin/delete/' + ${recipe.id}}" class="icon"><i class="bi bi-trash"></i></a>
+                		</div> 
+              		</div>
+            	</div>
+			</div>
+		</div>
 	</div>
 	
 </body>

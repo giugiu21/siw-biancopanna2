@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.model.Chef;
 import it.uniroma3.siw.model.Recipe;
+import it.uniroma3.siw.model.Review;
 import it.uniroma3.siw.repository.ChefRepository;
 import it.uniroma3.siw.repository.RecipeRepository;
+import it.uniroma3.siw.repository.ReviewRepository;
 import it.uniroma3.siw.validators.RecipeValidator;
 
 @Controller
@@ -24,6 +26,9 @@ public class AdminController {
 	
 	@Autowired
 	ChefRepository chefRepository;
+	
+	@Autowired
+	private ReviewRepository reviewRepository;
 
 
 	
@@ -33,6 +38,7 @@ public class AdminController {
 	
 	@GetMapping("/admin/indexAdmin")
 	public String indexAdmin(Model model) {
+		model.addAttribute("recipes", this.recipeRepository.findTopN(4));
 		return "admin/indexAdmin.html";
 	}
 	
@@ -96,6 +102,21 @@ public class AdminController {
 		model.addAttribute("recipe", recipe);
 		model.addAttribute("recipes", this.recipeRepository.findAll());
 		return "admin/recipesAdmin.html";
+	}
+	
+	@GetMapping("/admin/deleteReview/{recipeId}/{reviewId}")
+	public String removeReview(Model model, @PathVariable("recipeId") Long recipeId,@PathVariable("reviewId") Long reviewId){
+		Recipe recipe = this.recipeRepository.findById(recipeId).get();
+		Review review = this.reviewRepository.findById(reviewId).get();
+		//UserDetails userDetails = this.userService.getUserDetails();
+
+		recipe.getReviews().remove(review);
+		this.reviewRepository.delete(review);
+		this.recipeRepository.save(recipe);
+
+		model.addAttribute("recipe", this.recipeRepository.findById(recipeId).get());
+		
+		return "admin/recipeAdmin.html";
 	}
 	
 	

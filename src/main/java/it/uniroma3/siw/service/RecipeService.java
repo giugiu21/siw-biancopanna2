@@ -15,6 +15,6 @@ public interface RecipeService {
 	
 	public List<Recipe> findTopN(int n);
 	
-	
+
 
 }

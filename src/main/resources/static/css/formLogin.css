@@ -1,4 +1,8 @@
 
+.main-container{
+	background-color: rgb(246, 221, 225);
+	
+}
 form{
 	 display: flex;
 	 flex-direction: column;
@@ -11,6 +15,13 @@ form{
 	 margin-left: 30%;
 	 margin-right: 5%;
 		
+}
+
+h1{
+	text-align: center;
+	color: firebrick!important;
+	font-size: 3rem!important;
+	font-weight: bolder;
 }
 
 .btn-container{

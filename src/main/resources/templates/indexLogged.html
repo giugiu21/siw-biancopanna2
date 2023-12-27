@@ -55,7 +55,7 @@
 						<!--<h6>Descrizione:</h6>
                 		<p class="card-text" th:text="${recipe.description}">descrizione</p> -->
                 		<div class="card-button">
-                  		<a href="#" class="btn" id="link-btn">visualizza</a> <!-- pagina dettaglio con possibilità di fare recensioni -->
+                  		<a th:href="@{'/recipe/' + ${recipe.id}}" class="btn" id="link-btn">visualizza</a> <!-- pagina dettaglio con possibilità di fare recensioni -->
                 		</div> 
               		</div>
             	</div>
