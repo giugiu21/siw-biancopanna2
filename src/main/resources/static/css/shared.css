@@ -25,7 +25,15 @@ body{
     font-family: 'Playpen Sans', cursive;
 }
 
+.danger {
+    background-color: rgb(169 23 11 / 54%);
+    border-radius: 1em;
+    padding: 2%;
+    margin-top: 6%!important;
+    color: white;
+    font-weight: bolder;
 
+}
 
 .main-container{
     padding-top: 3%;

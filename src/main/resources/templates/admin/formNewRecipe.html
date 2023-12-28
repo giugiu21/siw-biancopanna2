@@ -32,7 +32,7 @@
                 <a class="nav-link" href="/admin/indexAdmin">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/recipesAdmin">Ricette</a>
+                <a class="nav-link" href="/recipes">Ricette</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/admin/formNewRecipe">Aggiungi Ricetta</a>
@@ -91,6 +91,7 @@
                <div class="btn-container">
 				   <button type="submit" class="btn">Submit</button>
 			   </div>
+			  <span class="danger" th:if="${recipeError}" th:text="${recipeError}"></span>
             </form>
         </div> 
     </div>

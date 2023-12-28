@@ -2,6 +2,7 @@ package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -24,7 +25,6 @@ public class Chef {
 	private LocalDate dateOfBirth;
 	
 
-	//private String image;
 	
 	private String email;
 	
@@ -83,12 +83,25 @@ public class Chef {
 		this.email = email;
 	}
 
-//	public String getImage() {
-//		return image;
-//	}
-//
-//	public void setImage(String image) {
-//		this.image = image;
-//	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(dateOfBirth, email, id, lastname, name, recipes);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Chef other = (Chef) obj;
+		return Objects.equals(dateOfBirth, other.dateOfBirth) && Objects.equals(email, other.email)
+				&& Objects.equals(id, other.id) && Objects.equals(lastname, other.lastname)
+				&& Objects.equals(name, other.name) && Objects.equals(recipes, other.recipes);
+	}
+
+
 
 }

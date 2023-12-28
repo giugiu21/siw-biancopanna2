@@ -36,6 +36,13 @@ form{
 	padding-right: 6%;
 }
 
+
+#link-register{
+	text-align: center;
+	margin-top: 5%!important;
+	margin-bottom: 0%;
+}
+
 .btn{
     background-color: olivedrab!important;
     box-shadow: 0px 0px 8px 0px black;

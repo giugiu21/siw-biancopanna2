@@ -61,7 +61,6 @@ public class ViewController {
 	
 	@GetMapping("/indexLogged")
 	public String indexLogged(Model model) {
-		//model.addAttribute("recipes", this.recipeRepository.findAll());
 		model.addAttribute("recipes", this.recipeRepository.findTopN(4));
 		return "indexLogged.html";
 	}
@@ -75,16 +74,17 @@ public class ViewController {
 			userDetails = (UserDetails)authentication.getPrincipal();
 			credentials = this.credentialsService.getCredentials(userDetails.getUsername());
 		}
+		
 		if(credentials != null && credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			model.addAttribute("recipes", this.recipeRepository.findTopN(4));
 			return "admin/indexAdmin.html";
 		}
 
 		/*model.addAttribute("userDetails", userDetails);*/
-		//model.addAttribute("recipes", this.recipeRepository.findAll());
 		model.addAttribute("recipes", this.recipeRepository.findTopN(4));
 		return "indexLogged.html";
 	}
+	
 	
 	@GetMapping("/register")
 	public String registration(Model model){
@@ -108,6 +108,9 @@ public class ViewController {
 			userService.saveUser(user);
 			model.addAttribute("user", user);
 			return "formLogin.html";
+		}
+		else {
+			model.addAttribute("registrationError", "Errore nella registrazione");
 		}
 		return "formRegistration.html";
 	}
@@ -160,7 +163,7 @@ public class ViewController {
 				recipe.getReviews().add(review);
 			}
 			else{
-				model.addAttribute("reviewError", "Already Reviewed!");
+				model.addAttribute("reviewError", "Ricetta già recensita!");
 			}
 
 		}

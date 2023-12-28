@@ -1,7 +1,6 @@
 package it.uniroma3.siw.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.model.Chef;
-import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Recipe;
 import it.uniroma3.siw.model.Review;
 import it.uniroma3.siw.repository.ChefRepository;
@@ -69,7 +67,7 @@ public class AdminController {
 			
 			return "recipe.html";
 		} else {
-			model.addAttribute("messaggioErrore", "Questa ricetta già esiste");
+			model.addAttribute("recipeError", "Questa ricetta già esiste!");
 			return "admin/formNewRecipe.html";
 		}
 	}
@@ -91,7 +89,7 @@ public class AdminController {
 			model.addAttribute("admin", true);
 		    return "recipes.html";
 		} else {
-			model.addAttribute("messaggioErrore", "Questo chef già esiste");
+			model.addAttribute("chefError", "Questo chef già esiste");
 			return "admin/formNewChef.html";
 		}
 	}
