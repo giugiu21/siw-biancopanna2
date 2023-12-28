@@ -1,5 +1,7 @@
 package it.uniroma3.siw.model;
 
+import java.util.Objects;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -60,5 +62,24 @@ public class Review {
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(author, id, rating, text, title);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Review other = (Review) obj;
+		return Objects.equals(author, other.author) && Objects.equals(id, other.id)
+				&& Objects.equals(rating, other.rating) && Objects.equals(text, other.text)
+				&& Objects.equals(title, other.title);
 	}
 }

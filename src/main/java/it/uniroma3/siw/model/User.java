@@ -1,5 +1,7 @@
 package it.uniroma3.siw.model;
 
+import java.util.Objects;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -42,5 +44,21 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(email, id, lastname, name);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(email, other.email) && Objects.equals(id, other.id)
+				&& Objects.equals(lastname, other.lastname) && Objects.equals(name, other.name);
 	}
 }

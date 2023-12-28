@@ -1,6 +1,7 @@
 package it.uniroma3.siw.model;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -83,6 +84,24 @@ public class Recipe {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(description, difficulty, id, image, ingredients, name, reviews);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Recipe other = (Recipe) obj;
+		return Objects.equals(description, other.description) && Objects.equals(difficulty, other.difficulty)
+				&& Objects.equals(id, other.id) && Objects.equals(image, other.image)
+				&& Objects.equals(ingredients, other.ingredients) && Objects.equals(name, other.name)
+				&& Objects.equals(reviews, other.reviews);
 	}
 
 }
