@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>New Recipe</title>
+    <title>Bianco Panna</title>
     <link href="/css/formNewRecipe.css" rel="stylesheet"/>
     <link href="/css/formUpdateRecipe.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/css/shared.css" />
@@ -50,7 +50,7 @@
 <body>
     <div class="main-container" th:style="'background:url(' + @{${recipe.image}} + ');'">
         <div class="form-container" th:if="${recipe}">
-				<h1>Modifica Ricetta: </h1>
+				<h1 id="title">Modifica Ricetta: </h1>
                 
                 <div style="display: flex;">
 					<h6 style="font-weight: bolder; margin-right: 1.5%;">Nome Ricetta:</h6>

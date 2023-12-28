@@ -24,7 +24,24 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+		 <ul class="navbar-nav" th:if="${admin}">
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin/indexAdmin">Home</a>
+            </li>
+            <li class="nav-item">
+				 <a class="nav-link" href="/recipes">Ricette</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="/admin/formNewRecipe">Aggiungi Ricetta</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/formNewChef">Aggiungi Chef</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav" th:unless="${admin}">
             <li class="nav-item active">
                 <a class="nav-link" href="/indexLogged">Home</a>
             </li>
@@ -40,7 +57,7 @@
 <body>
 	<div class="main-container" th:if="${recipe}">
 			<h1 id="titolo" th:text="${recipe.name}">nome ricetta</h1>
-			<img th:src="${recipe.image}" style="width: 100%; height: 500px;">
+			<img th:src="${recipe.image}" style="width: 100%; height: 500px; margin-top:-2%; margin-bottom: 2%;">
 			
 			<div class="container-column">
 				<div class="ingredient-list-container">
@@ -55,12 +72,17 @@
 					<div class="difficulty-text">
 						<h2 th:text="${recipe.difficulty}"></h2><h2>/3</h2>
 					</div>
+					<div th:if="${recipe.chef}">
+						<h2 class="sottotitolo" style="margin-top: 5%;">Chef:</h1>
+						<p th:text="${recipe.chef.name} + ' ' + ${recipe.chef.lastname}">nome e cognome Chef</p>
+					</div>
 				</div>
 			</div>
 			<div style="margin-left: 5%;">
-				<h2 id="sottotitolo-descrizione">Descrizione ricetta</h1>
+				<h2 id="sottotitolo-descrizione">Descrizione ricetta:</h1>
 				<p th:text="${recipe.description}"></p>
 			</div>
+			
 			<!--REVIEWS-->
 			<div th:if="${review != null}">
 				<h2 id="review-title">Scrivi una recensione per questa ricetta</h2>
@@ -70,7 +92,6 @@
 					<label style="font-weight: bolder;">Titolo:</label>
 					<input type="text" th:field="*{title}" class="input-text form-control">
 					<label style="font-weight: bolder;">Testo:</label>
-					<!-- <input type="text" th:field="*{description}"  class="input-text form-control description"> -->
 					<textarea type="text" rows="4" id="text" placeholder="Inserisci il testo della recensione"
 						class="form-control description" th:field="*{text}" autocomplete="off"></textarea>
 					<label style="font-weight: bolder;">Rating:
@@ -89,19 +110,23 @@
 			</div>
 			<!-- REVIEW LIST -->
 			<div th:if="${not #lists.isEmpty(recipe.reviews)}">
-				<h2 id="review-title">Leggi anche le altre recensioni</h2>
+				<h2 id="review-title">Leggi tutte le recensioni</h2>
 				<!-- SINGLE REVIEW-->
 				<ul class="list-group" style="width: 80%; margin-left: 10%;">
 					<li class="list-group-item d-flex" style="flex-direction: column!important;"
 						th:each="review : ${recipe.reviews}">
 						<div class="review-title-line">
-							<h2 th:text="${review.title}">Titolo</h2>
+							<h2 th:text="${review.title}" style="color: olivedrab!important;">Titolo</h2>
 						</div>
 						<div>
-							<div th:text="'-' + ${review.author}">Author username</div>
+							<div th:text="'-' + ${review.author}" style="margin-top: -1%; margin-bottom: 3%; font-weight: lighter;">Author username</div>
+							<span th:if="${admin}" ><a style="float: right;" th:href="@{'/admin/deleteReview/' + ${recipe.id} + '/' + ${review.id}}" class="icon"><i class="bi bi-trash"></i></a></span>
 						</div>
-						<div class="review-text" th:text="${review.text}">Review Text</div>
-						<div th:text="${'Rating: ' + review.rating}">Rating: 5</div>
+						
+						<div class="review-text" th:text="${review.text}" style="margin-bottom: 2%;">Review Text</div>
+						<div>
+							<span style="color: olivedrab;">Rating: </span>
+							<span th:text="${review.rating}" style="font-weight: bolder;">5</span></div>
 			
 			
 					</li>

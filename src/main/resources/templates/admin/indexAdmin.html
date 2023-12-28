@@ -29,7 +29,7 @@
                 <a class="nav-link" href="/admin/indexAdmin">Home</a>
             </li>
             <li class="nav-item">
-				 <a class="nav-link" href="/admin/recipesAdmin">Ricette</a>
+				 <a class="nav-link" href="/recipes">Ricette</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link"  href="/admin/formNewRecipe">Aggiungi Ricetta</a>
@@ -61,7 +61,7 @@
 						<!--<h6>Descrizione:</h6>
                 		<p class="card-text" th:text="${recipe.description}">descrizione</p> -->
                 		<div class="card-button">
-                  		<a th:href="@{'/admin/recipe/' + ${recipe.id}}" class="icon"><i class="bi bi-eye"></i></a>
+                  		<a th:href="@{'recipe/' + ${recipe.id}}" class="icon"><i class="bi bi-eye"></i></a>
 						<a th:href="@{'/admin/formUpdateRecipe/' + ${recipe.id}}" class="icon"><i class="bi bi-pencil-square"></i></a>
 						<a th:href="@{'/admin/delete/' + ${recipe.id}}" class="icon"><i class="bi bi-trash"></i></a>
                 		</div> 

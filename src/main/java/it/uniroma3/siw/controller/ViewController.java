@@ -120,15 +120,21 @@ public class ViewController {
 	@GetMapping("/recipe/{id}")
 	public String product(@PathVariable("id") Long id, Model model) {
 
-		//UserDetails userDetails = this.userService.getUserDetails();
-		//model.addAttribute("userDetails", userDetails);
-
 		Recipe recipe = this.recipeRepository.findById(id).get();
-
 		model.addAttribute("recipe", recipe);
+		
+		
+		UserDetails userDetails = this.userService.getUserDetails();
+        
+        if(userDetails != null && this.credentialsService.getCredentials(userDetails.getUsername()).getRole().equals(Credentials.ADMIN_ROLE)){
+			model.addAttribute("admin", true);
+		}
+        
+        if(userDetails != null && this.credentialsService.getCredentials(userDetails.getUsername()).getRole().equals(Credentials.DEFAULT_ROLE)){
+        	/* Gestione della review */
+    		model.addAttribute("review", new Review());
+		}
 
-		/* Gestione della review */
-		model.addAttribute("review", new Review());
 		
 		return "recipe.html";
 	}

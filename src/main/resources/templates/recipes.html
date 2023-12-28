@@ -24,7 +24,24 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+		 <ul class="navbar-nav" th:if="${admin}">
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin/indexAdmin">Home</a>
+            </li>
+            <li class="nav-item">
+				 <a class="nav-link" href="/recipes">Ricette</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="/admin/formNewRecipe">Aggiungi Ricetta</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/formNewChef">Aggiungi Chef</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav" th:unless="${admin}">
             <li class="nav-item active">
                 <a class="nav-link" href="/indexLogged">Home</a>
             </li>
@@ -53,7 +70,14 @@
 						</ul>
 						<!--<h6>Descrizione:</h6>
 				                		<p class="card-text" th:text="${recipe.description}">descrizione</p> -->
-						<div class="card-button">
+				         <div class="card-button" th:if="${admin}">
+							
+							<a th:href="@{'/recipe/' + ${recipe.id}}" class="icon"><i class="bi bi-eye"></i></a>
+							<a th:href="@{'/admin/formUpdateRecipe/' + ${recipe.id}}" class="icon"><i class="bi bi-pencil-square"></i></a>
+							<a th:href="@{'/admin/delete/' + ${recipe.id}}" class="icon"><i class="bi bi-trash"></i></a>
+							<!-- pagina dettaglio con possibilità di fare recensioni -->
+						</div>
+						<div class="card-button" th:unless="${admin}">
 							<a class="btn" th:href="@{'/recipe/' + ${recipe.id}}">Visualizza</a>
 						</div>
 					</div>

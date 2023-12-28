@@ -41,7 +41,7 @@
 	<div class="main-container">
 		 <div class="form-container">
             <form th:action="@{/register}" method="POST">
-				<h1>Registrati per entrare nella nostra community</h1>
+				<h1 id="title">Registrati per entrare nella nostra community</h1>
 				<label style="font-weight: bolder;">Nome:</label>
                 <input type="text" th:field="${user.name}" class="input-text form-control">
                 <label style="font-weight: bolder;">Cognome:</label>

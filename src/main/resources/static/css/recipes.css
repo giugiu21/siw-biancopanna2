@@ -5,11 +5,15 @@
 
 #title{
 	text-align: center;
+	background-color: rgb(246, 201, 210);
 	font-size: 350%;
 	font-weight: bolder;
 	font-family: 'Playpen Sans', cursive!important;
 	margin-bottom: 5%!important;
-	color: firebrick!important;   
+	margin-left: -20px;
+	margin-right: -20px;
+	padding: 1%;
+	color: white!important; 
 }
 
 ul{
@@ -47,7 +51,7 @@ li{
 }
 
 h6{
-   color: firebrick!important;   
+   color: olivedrab!important;   
         
 }
 
@@ -66,7 +70,7 @@ h6{
     font-size: 150%!important;
     height: 60px;
     margin-top: 2%;
-    color: firebrick!important;
+    color: olivedrab!important;
     margin-bottom: -1%;
 }
 
@@ -85,7 +89,7 @@ h6{
 .icon{
 	border-radius: 2rem;
 	width: 11.5%;
-	background-color: firebrick!important;
+	background-color: olivedrab!important;
 	margin: 1%;
 	padding: 2%;
 	padding-bottom: 3%;
@@ -108,7 +112,7 @@ i{
 
 
 .btn{
-    background-color: firebrick!important;
+    background-color: olivedrab!important;
     box-shadow: 0px 0px 8px 0px black;
     border-radius: 15px 15px 0;
     color: white!important;

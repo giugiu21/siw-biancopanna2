@@ -1,8 +1,14 @@
 
-.main-container{
-	background-color: rgb(246, 221, 225);
-	
+.form-container{
+	background-color: rgb(246, 201, 210);
+	width: 100%;
+    height: fit-content;
+    border-radius: 1rem;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
+
+
 form{
 	 display: flex;
 	 flex-direction: column;
@@ -17,9 +23,8 @@ form{
 		
 }
 
-h1{
+#title{
 	text-align: center;
-	color: firebrick!important;
 	font-size: 3rem!important;
 	font-weight: bolder;
 }
@@ -32,7 +37,7 @@ h1{
 }
 
 .btn{
-    background-color: firebrick!important;
+    background-color: olivedrab!important;
     box-shadow: 0px 0px 8px 0px black;
     border-radius: 15px 15px 0;
     color: white!important;
