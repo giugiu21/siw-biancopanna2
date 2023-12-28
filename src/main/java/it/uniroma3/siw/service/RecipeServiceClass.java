@@ -15,8 +15,8 @@ public class RecipeServiceClass {
 	@Autowired
 	RecipeRepository recipeRepository;
 	
-	public boolean hasReviewFromAuthor(Long productId, String username){
-        Recipe recipe = this.recipeRepository.findById(productId).get();
+	public boolean hasReviewFromAuthor(Long recipeId, String username){
+        Recipe recipe = this.recipeRepository.findById(recipeId).get();
         Set<Review> reviews = recipe.getReviews();
         for (Review review: reviews) {
             if(review.getAuthor().equals(username)) {
