@@ -25,5 +25,19 @@ public class RecipeServiceClass {
         }
         return false;
     }
+	
+	
+	public void edit(Recipe recipe, Long id) {
+		Recipe myRecipe = this.recipeRepository.findById(id).orElse(null);
+		myRecipe.setName(recipe.getName());
+		myRecipe.setDescription(recipe.getDescription());
+		myRecipe.setDifficulty(recipe.getDifficulty());
+		myRecipe.setImage(recipe.getImage());
+		myRecipe.setIngredients(recipe.getIngredients());
+		//myRecipe.setReviews(recipe.getReviews());
+		myRecipe.setChef(recipe.getChef());
+		
+		this.recipeRepository.save(myRecipe);
+	}
 
 }

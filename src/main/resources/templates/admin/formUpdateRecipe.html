@@ -49,39 +49,64 @@
 </nav>
 <body>
     <div class="main-container" th:style="'background:url(' + @{${recipe.image}} + ');'">
-        <div class="form-container" th:if="${recipe}">
-				<h1 id="title">Modifica Ricetta: </h1>
-                
-                <div style="display: flex;">
-					<h6 style="font-weight: bolder; margin-right: 1.5%;">Nome Ricetta:</h6>
-                	<h6 th:text="${recipe.name}">Ciambellone</h6>
+        <div>
+				 <form th:action="@{/admin/updateRecipe/} + ${recipe.id}" method="POST" th:object="${recipe}">
+				<h1 id="title">Inserisci una nuova ricetta</h1>
+				<label style="font-weight: bolder;">Nome Ricetta:</label>
+                <input type="text" th:field="*{name}" class="input-text form-control">
+                <label style="font-weight: bolder;">Url Immagine Ricetta:</label>
+                <input type="text" th:field="*{image}" class="input-text form-control">
+                <label style="font-weight: bolder;">Difficoltà (1=semplice, 3=difficile):
+                 <select th:field="*{difficulty}" class="input-select">
+    				<option th:value="1" th:text="1"></option>
+    				<option th:value="2" th:text="2"></option>
+    				<option th:value="3" th:text="3"></option>
+				</select>
+				</label>
+				<label style="font-weight: bolder;">Ingredienti:</label>
+                <div class="checkbox-container">
+					<div class="column">
+						<label><input type="checkbox" value="uova" th:field="*{ingredients}"> uova</label>
+                		<label><input type="checkbox" value="farina" th:field="*{ingredients}"> farina</label>
+                		<label><input type="checkbox" value="latte" th:field="*{ingredients}"> latte</label>
+                		<label><input type="checkbox" value="zucchero" th:field="*{ingredients}"> zucchero</label>
+					</div>
+					<div class="column">
+						<label><input type="checkbox" value="panna" th:field="*{ingredients}"> panna</label>
+                		<label><input type="checkbox" value="sale" th:field="*{ingredients}"> sale</label>
+                		<label><input type="checkbox" value="lievito" th:field="*{ingredients}"> lievito</label>
+                		<label><input type="checkbox" value="yogurt" th:field="*{ingredients}"> yogurt</label>	
+					</div>
+					<div class="column">
+						<label><input type="checkbox" value="olio" th:field="*{ingredients}"> olio</label>
+                		<label><input type="checkbox" value="gelatina" th:field="*{ingredients}"> gelatina</label>
+                		<label><input type="checkbox" value="burro" th:field="*{ingredients}"> burro</label>
+                		<label><input type="checkbox" value="cacao" th:field="*{ingredients}"> cacao</label>	
+					</div>
 				</div>
-               
-                 <!-- immagine? -->
- 				<label style="font-weight: bolder;">Ingredienti:</label>
-                 <div class="row" >
- 					<div class="col-sm-6" th:each="ingredient : ${recipe.ingredients}">
- 						<label th:text="*{ingredient}"> uova</label>
- 					</div>
- 					
- 				</div>
-                 <label style="font-weight: bolder; margin-top: 2%;">Descrizione: </label>
-				 <p th:text="${recipe.description}" style="margin-top: -2%;">Descrizione ricetta</p>
-                
-				<div th:if="${recipe.chef}">
-					<label style="font-weight: bolder;">Chef:
-						<h6 th:text="${recipe.chef.name} + ' ' + ${recipe.chef.lastname}">Alessandro Borghese</h6>
-					</label>
+                <label style="font-weight: bolder;">Descrizione:</label>
+                <!-- <input type="text" th:field="*{description}"  class="input-text form-control description"> -->
+                <textarea type="text" rows="4" id="description" placeholder="Inserisci il testo della ricetta" class="form-control description"
+                              th:field="*{description}" autocomplete="off"></textarea>
+                              
+                 <div th:if="${recipe.chef}">
+					<label style="font-weight: bolder;">Chef:</label>
+					<span style="color: #b0aeae!important; margin-left: 2%;" th:text="${recipe.chef.name} + ' ' + ${recipe.chef.lastname}"></span>
 				</div>
-				<label style="font-weight: bolder;">Modifica chef:</label>
-				<p th:if="${chefs.isEmpty()}">Non ci sono chef nel sistema, aggiungi prima uno chef per poterlo associare alla ricetta</p>
-				<ul th:each="chef : ${chefs}">
-					<li> 
-						<p th:text="${chef.name} + ' ' + ${chef.lastname}"></p>
-						<a th:href="@{'/admin/setChefToRecipe/'+ ${chef.id}+'/'+${recipe.id}}"><i class="bi bi-plus-circle-fill"></i></a>
-					</li>
-				</ul>
-        </span> 
+					<label style="font-weight: bolder; margin-top: 1.5%;">Aggiungi o modifica chef</label>
+					<div th:if="${chefs}">
+							<select id="chef" th:field="${recipe.chef}" class="input-select-chef">
+								<option value="">--seleziona--</option>
+    							<option th:each="chef : ${chefs}" th:value="${chef.id}" th:text="${chef.name} + ' ' + ${chef.lastname}"></option>
+							</select>
+					</div>
+				<div th:unless="${chefs}">
+					<h6 style="color: white;">Non ci sono chef nel sistema</h6>
+				</div>
+               <div class="btn-container">
+				   <button type="submit" class="btn">Submit</button>
+			   </div>
+            </form>
     </div>
 </body>
 </html>

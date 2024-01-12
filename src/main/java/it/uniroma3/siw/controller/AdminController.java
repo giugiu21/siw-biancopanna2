@@ -17,6 +17,7 @@ import it.uniroma3.siw.repository.ChefRepository;
 import it.uniroma3.siw.repository.RecipeRepository;
 import it.uniroma3.siw.repository.ReviewRepository;
 import it.uniroma3.siw.service.CredentialsService;
+import it.uniroma3.siw.service.RecipeServiceClass;
 import it.uniroma3.siw.service.UserService;
 import it.uniroma3.siw.validators.RecipeValidator;
 
@@ -24,19 +25,22 @@ import it.uniroma3.siw.validators.RecipeValidator;
 public class AdminController {
 
 	@Autowired
-	RecipeRepository recipeRepository;
+	private RecipeRepository recipeRepository;
 	
 	@Autowired
-	ChefRepository chefRepository;
+	private ChefRepository chefRepository;
 	
 	@Autowired
-	UserService userService;
+	private UserService userService;
 	
 	@Autowired
-	CredentialsService credentialsService;
+	private CredentialsService credentialsService;
 	
 	@Autowired
 	private ReviewRepository reviewRepository;
+	
+	@Autowired
+	private RecipeServiceClass recipeServiceClass;
 
 
 	
@@ -142,6 +146,15 @@ public class AdminController {
         model.addAttribute("chefs", this.chefRepository.findAll());
         return "admin/formUpdateRecipe.html";
     }
+	
+	@PostMapping("admin/updateRecipe/{id}")
+	public String updateRecipeData(@ModelAttribute("recipe") Recipe recipe, @PathVariable("id") Long recipeId, Model model) {
+		
+		this.recipeServiceClass.edit(recipe, recipeId);
+		model.addAttribute("recipes", this.recipeRepository.findAll());
+		model.addAttribute("admin", true);
+		return "recipes.html";
+	}
 	
 
     

@@ -1,6 +1,9 @@
 
 .form-container{
-	background-color: rgb(246, 201, 210);
+	background-image: url("../images/sfondo.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
 	width: 100%;
     height: fit-content;
     border-radius: 1rem;
