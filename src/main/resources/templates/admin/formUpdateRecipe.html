@@ -91,7 +91,7 @@
                               
                  <div th:if="${recipe.chef}">
 					<label style="font-weight: bolder;">Chef:</label>
-					<span style="color: #b0aeae!important; margin-left: 2%;" th:text="${recipe.chef.name} + ' ' + ${recipe.chef.lastname}"></span>
+					<span style="margin-left: 2%;" th:text="${recipe.chef.name} + ' ' + ${recipe.chef.lastname}"></span>
 				</div>
 					<label style="font-weight: bolder; margin-top: 1.5%;">Aggiungi o modifica chef</label>
 					<div th:if="${chefs}">
