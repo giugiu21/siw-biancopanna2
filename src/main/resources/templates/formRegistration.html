@@ -52,7 +52,7 @@
                 
                 <label style="font-weight: bolder;">Email:</label>
                 <input type="email" th:field="${user.email}" class="input-text form-control">
-                <span th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}" th:style="'color:red'">
+                <p th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}" th:style="'color:red'"></p>
                 
                 <label style="font-weight: bolder;">Username:</label>
                 <input type="text" th:field="*{credentials.username}" class="input-text form-control">
